@@ -1,5 +1,5 @@
-//
-Simulador de pago con varias opciones
+//Simulador de pago con varias opciones
+
 let pagar = true
 
 while(pagar) {
