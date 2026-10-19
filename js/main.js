@@ -1,4 +1,5 @@
-/*Simulador de pago con varias opciones
+//
+Simulador de pago con varias opciones
 let pagar = true
 
 while(pagar) {
@@ -35,11 +36,4 @@ while(pagar) {
         pagar = false
         alert("Gracias por su compra!")
     }
-  }
-*/
-
-function sumar (num1, num2){
-    alert("La suma de " + num1 + " y " + num2 + " es: " + (num1 + num2))
 }
-
-sumar (1, 2)
