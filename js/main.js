@@ -2,11 +2,14 @@
 
 function preguntarCuotas (){
     let cuotas = parseInt(prompt("Ingrese la cantidad de cuotas: de 1 a 12"))
-    //if (cuotas >=1 && cuotas <=6 ){
-
-    //}
     return cuotas
 }
+
+function recargoCuotas(cantidadCuotas){
+    if(cantidadCuotas >= 1 || cantidadCuotas <= 3)
+        cantidadCuotas = cantidadCuotas * 1.1
+}
+
 
 let pagar = true
 
