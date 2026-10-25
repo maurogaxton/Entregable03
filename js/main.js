@@ -6,10 +6,10 @@ function preguntarCuotas (){
 }
 
 function recargarCuotas(cantidadCuotas){
-    let recargo = 1
-    if (cantidadCuotas >= 1 || cantidadCuotas <= 3 ) {
+    let recargo
+    if ( cantidadCuotas >= 1 && cantidadCuotas <= 3 ) {
         recargo = 1.1
-    } else if (cantidadCuotas > 3 || cantidadCuotas <= 6 ) {
+    } else if ( cantidadCuotas >= 4 && cantidadCuotas <= 6 ) {
         recargo = 1.5
     } else {
         recargo = 2
