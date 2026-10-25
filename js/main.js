@@ -30,9 +30,10 @@ while(pagar) {
             let cuotasVisa = preguntarCuotas()
             let cuotasRecargo = recargarCuotas(cuotasVisa)
             let importeCuota = ((importe * cuotasRecargo) / cuotasVisa)
+            let porcentaje = ((cuotasRecargo - 1) * 100 )
             let costoTotalFinanciado = importe * cuotasRecargo
 
-            alert("Por su compra de $ " + importe + " con Visa, abonara " + cuotasVisa + " cuotas de $ " + importeCuota + ". CTF: $ " + costoTotalFinanciado)
+            alert("Por su compra de $ " + importe + " con Visa, abonara un recargo de " + porcentaje + " %: \n" + cuotasVisa + " cuotas de $ " + importeCuota +  "\n Costo total financiado: $ " + costoTotalFinanciado)
             break
         case 2:
             let importeMaster = importe * 0.9
