@@ -1,10 +1,5 @@
 //Simulador de pago con varias opciones
 
-function preguntarCuotas (){
-    let cuotas = parseInt(prompt("Ingrese la cantidad de cuotas: de 1 a 12"))
-    return cuotas
-}
-
 function recargarCuotas(cantidadCuotas){
     let recargo
     if ( cantidadCuotas >= 1 && cantidadCuotas <= 3 ) {
@@ -17,8 +12,8 @@ function recargarCuotas(cantidadCuotas){
     return recargo
 }
 
-function calcularValorCuota(importe, recargo, cuotas){
-    let importeDeCuota = ((importe * recargo) / cuotas)
+function calcularValorCuota(Importe, CuotasRecargo, Cuotas){
+    let importeDeCuota = ((Importe * CuotasRecargo) / Cuotas)
     return importeDeCuota
 }
 
@@ -33,10 +28,9 @@ while(pagar) {
     let importe = parseFloat(prompt("Ingrese el importe de la compra"))
     let menu = parseInt(prompt("Ingrese una opcion de pago: 1 VISA, 2 MASTERCARD, 3 AMERICAN EXPRESS, 4 MERCADOPAGO o 5 EFECTIVO"))
     
-
     switch(menu) {
         case 1:
-            let cuotasVisa = preguntarCuotas()
+            let cuotasVisa = parseInt(prompt("Ingrese la cantidad de cuotas: de 1 a 12"))
             let cuotasRecargo = recargarCuotas(cuotasVisa)
             let importeCuota = calcularValorCuota (importe, cuotasRecargo, cuotasVisa)
             let porcentaje = calcularPorcentaje(cuotasRecargo)
