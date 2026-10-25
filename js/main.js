@@ -5,9 +5,12 @@ function preguntarCuotas (){
     return cuotas
 }
 
-function recargoCuotas(cantidadCuotas){
-    if(cantidadCuotas >= 1 || cantidadCuotas <= 3)
-        cantidadCuotas = cantidadCuotas * 1.1
+function recargarCuotas(cantidadCuotas){
+    let recargo = 1
+    if(cantidadCuotas >= 1 || cantidadCuotas <= 3){
+        recargo = 1.1
+    }
+    return recargo
 }
 
 
@@ -21,8 +24,11 @@ while(pagar) {
     switch(menu) {
         case 1:
             let cuotasVisa = preguntarCuotas()
-            let importeVisa = (importe / cuotasVisa)
-            alert("Por su compra de $ " + importe + " abonara " + cuotasVisa + " cuotas de $ " + importeVisa )
+            let cuotasRecargo = recargarCuotas(cuotasVisa)
+            let importeCuota = ((importe * cuotasRecargo) / cuotasVisa)
+            let costoTotalFinanciado = importe * cuotasRecargo
+
+            alert("Por su compra de $ " + importe + " con Visa, abonara " + cuotasVisa + " cuotas de $ " + importeCuota + "CTF: $ " + costoTotalFinanciado)
             break
         case 2:
             let importeMaster = importe * 0.9
