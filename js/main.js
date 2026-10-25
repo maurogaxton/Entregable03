@@ -1,4 +1,4 @@
-//Simulador de pago con varias opciones
+//Simulador de modulo de pago 
 
 function recargarCuotas(cantidadCuotas){
     let recargo
@@ -12,39 +12,52 @@ function recargarCuotas(cantidadCuotas){
     return recargo
 }
 
-function calcularValorCuota(Importe, CuotasRecargo, Cuotas){
-    let importeDeCuota = ((Importe * CuotasRecargo) / Cuotas)
-    return importeDeCuota
+function calcularValorCuota(importe, cuotasRecargo, cuotas){
+    let importeDeCuota = ((importe * cuotasRecargo) / cuotas)
+    return importeDeCuota.toFixed(2)
 }
 
 function calcularPorcentaje(cuotasConRecargo){
     let valorPorcentaje = ((cuotasConRecargo - 1) * 100 )
-    return valorPorcentaje
+    return valorPorcentaje.toFixed(2)
 }
 
-let pagar = true
+const calcularCostoTotal = (importe, cuotasRecargo) => importe * cuotasRecargo
 
+let pagar = true
 while(pagar) {
+    
     let importe = parseFloat(prompt("Ingrese el importe de la compra"))
     let menu = parseInt(prompt("Ingrese una opcion de pago: 1 VISA, 2 MASTERCARD, 3 AMERICAN EXPRESS, 4 MERCADOPAGO o 5 EFECTIVO"))
-    
+    let cuotasRecargo
+    let importeCuota
+    let porcentaje
+    let costoTotalFinanciado
+
     switch(menu) {
         case 1:
             let cuotasVisa = parseInt(prompt("Ingrese la cantidad de cuotas: de 1 a 12"))
-            let cuotasRecargo = recargarCuotas(cuotasVisa)
-            let importeCuota = calcularValorCuota (importe, cuotasRecargo, cuotasVisa)
-            let porcentaje = calcularPorcentaje(cuotasRecargo)
-            let costoTotalFinanciado = importe * cuotasRecargo
-
-            alert("Por su compra de $ " + importe + " con Visa, abonara un recargo de " + porcentaje + " %: \n" + cuotasVisa + " cuotas de $ " + importeCuota +  "\n Costo total financiado: $ " + costoTotalFinanciado)
+            cuotasRecargo = recargarCuotas(cuotasVisa)
+            importeCuota = calcularValorCuota (importe, cuotasRecargo, cuotasVisa)
+            porcentaje = calcularPorcentaje(cuotasRecargo)
+            costoTotalFinanciado = calcularCostoTotal (importe, cuotasRecargo)
+            alert("Por su compra de $ " + importe + " con Visa, abonara un recargo de " + porcentaje + " %: \n" + cuotasVisa + " cuotas de $ " + importeCuota +  "\n Costo total financiado: $ " + costoTotalFinanciado.toFixed(2))
             break
         case 2:
-            let importeMaster = importe * 0.9
-            alert("Su pago con Mastercard tiene un 10% de descuento, por su compra de $ " + importe + " abonara $ " + importeMaster )
+            let cuotasMaster = parseInt(prompt("Ingrese la cantidad de cuotas: de 1 a 12"))
+            cuotasRecargo = recargarCuotas(cuotasMaster)
+            importeCuota = calcularValorCuota (importe, cuotasRecargo, cuotasMaster)
+            porcentaje = calcularPorcentaje(cuotasRecargo)
+            costoTotalFinanciado = calcularCostoTotal (importe, cuotasRecargo)
+            alert("Por su compra de $ " + importe + " con Mastercard, abonara un recargo de " + porcentaje + " %: \n" + cuotasMaster + " cuotas de $ " + importeCuota +  "\n Costo total financiado: $ " + costoTotalFinanciado.toFixed(2))
             break
         case 3:
-            let importeAmerican = importe * 0.95
-            alert("Su pago con American Express tiene un 5% de descuento, por su compra de $ " + importe + " abonara $ " + importeAmerican )
+            let cuotasAmerican = parseInt(prompt("Ingrese la cantidad de cuotas: de 1 a 12"))
+            cuotasRecargo = recargarCuotas(cuotasAmerican)
+            importeCuota = calcularValorCuota (importe, cuotasRecargo, cuotasAmerican)
+            porcentaje = calcularPorcentaje(cuotasRecargo)
+            costoTotalFinanciado = calcularCostoTotal (importe, cuotasRecargo )
+            alert("Por su compra de $ " + importe + " con Mastercard, abonara un recargo de " + porcentaje + " %: \n" + cuotasAmerican + " cuotas de $ " + importeCuota +  "\n Costo total financiado: $ " + costoTotalFinanciado.toFixed(2))
             break
         case 4:
             let importeMP = importe * 0.85
