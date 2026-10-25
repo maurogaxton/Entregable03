@@ -1,15 +1,25 @@
 //Simulador de pago con varias opciones
 
+function preguntarCuotas (){
+    let cuotas = parseInt(prompt("Ingrese la cantidad de cuotas: de 1 a 12"))
+    //if (cuotas >=1 && cuotas <=6 ){
+
+    //}
+    return cuotas
+}
+
 let pagar = true
 
 while(pagar) {
     let importe = parseFloat(prompt("Ingrese el importe de la compra"))
     let menu = parseInt(prompt("Ingrese una opcion de pago: 1 VISA, 2 MASTERCARD, 3 AMERICAN EXPRESS, 4 MERCADOPAGO o 5 EFECTIVO"))
+    
 
     switch(menu) {
         case 1:
-            let importeVisa = importe * 0.8
-            alert("Su pago con VISA tiene un 20% de descuento, por su compra de $ " + importe + " abonara $ " + importeVisa )
+            let cuotasVisa = preguntarCuotas()
+            let importeVisa = (importe / cuotasVisa)
+            alert("Por su compra de $ " + importe + " abonara " + cuotasVisa + " cuotas de $ " + importeVisa )
             break
         case 2:
             let importeMaster = importe * 0.9
